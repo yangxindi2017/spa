@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             },
             css: {
                 src: "./layout.css",
-                dest: "./dist/index.css"
+                dest: "./dist/layout.css"
             },
             js: {
                 src: "./varigate.js",
