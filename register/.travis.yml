@@ -1,6 +1,6 @@
 nguage: node_js
 node_js:
-  - "6"
+  - "node"
 
 after_script:
   - grunt minify
