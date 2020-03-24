@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>timer button</title>
+  <link rel="stylesheet" href="./timer-button.css">
+</head>
+<body>
+  <label>禁用时间：</label>
+  <input type="number" id="num" min="1" max="60" autofocus/>
+  <input class="inp" type="button" id="add" value="添加定时器按钮"/>
+  <hr/>
+  <div id="main"></div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="./timer-button.js"></script> 
+  <script>
+  $(function(){
+    var $btnadd = $("#add"),
+        $num = $("#num");
+
+    $btnadd.click(function(){
+      $timerButton.show({
+        num:$num.val(),
+        title:'发送验证码',
+        onClick:function(){
+          console.log('点击了按钮')
+        }
+        });
+      });
+    });
+  </script>
+  </body>
+</html>
