@@ -10,7 +10,12 @@
   font-Size:18px;
   height:50px;
   width:150px;
-  
+  margin:10px;  
+}
+#num,#text,#event{
+  margin:10px;
+  height:40px;
+  width:150px;
 }
 
 

@@ -6,8 +6,15 @@
   <link rel="stylesheet" href="./timer-button.css">
 </head>
 <body>
-  <label>禁用时间：</label>
-  <input type="number" id="num" min="1" max="60" autofocus/>
+  <label>禁用时长：</label>
+  <input type="number" value="6" id="num" min="1" max="60" autofocus/>
+  <br/>
+  <label>按钮文字: </label>
+  <input id="text" type="text" value="同意">
+  <br/>
+  <label>事件代码: </label>
+  <textarea id="event"></textarea>
+  <br/>
   <input class="inp" type="button" id="add" value="添加定时器按钮"/>
   <hr/>
   <div id="main"></div>
@@ -16,17 +23,27 @@
   <script>
   $(function(){
     var $btnadd = $("#add"),
-        $num = $("#num");
-
+        $num = $("#num"),
+        $text=$('#text'),
+        $event=$('#event');
+    //1.构造函数
+        $btnadd.click(function(){
+          var tb = new TimerButton();
+          tb.show({
+            num:$num.val(),
+            title:$text.val(),
+            onClick:new Function($event.val())
+          });
+        });
+    /*2.函数工场
     $btnadd.click(function(){
       $timerButton.show({
         num:$num.val(),
-        title:'发送验证码',
-        onClick:function(){
-          console.log('点击了按钮')
-        }
+        title:$text.val(),
+        onClick:new Function($event.val())
         });
       });
+    */
     });
   </script>
   </body>

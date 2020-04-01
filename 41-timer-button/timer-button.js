@@ -1,7 +1,5 @@
-var $timerButton =(function(){
-  //1.引入DOM方式
-  //var html ='<input type="button" id="add" value="同意（6S）" disabled">';
-  
+//1.构造函数方式：
+function TimerButton(){
   var $btn =
       $('<input class="timer-button" type="button" disabled>'),
       cfg={  //默认配置信息
@@ -12,16 +10,71 @@ var $timerButton =(function(){
       },
       timer,
       isRun=false;
-  
-  function show(conf){
-    //1.DOM draw DOM绘制
-    //$(container).html(html);
+
+  this.show = function(conf){
     $(cfg.container).append($btn);
     $.extend(cfg,conf);
-
     num = conf.num;
-    console.log(num);
-    $btn.val(cfg.title+"("+cfg.num+"s)");
+    $btn.val(cfg.title+"("+num+"s)");
+    
+    //2.event bind 
+    if(isRun === true && timer!==undefined){
+      return;
+    }else{
+      timer = setInterval(function(){
+        num--;
+        if(num === 0 ){
+          clearInterval(timer);
+          $btn.val(cfg.title);
+          $btn.removeAttr('disabled');
+          num = 6;
+          isRun=false;
+        }else{
+          isRun=true;
+          $btn.val(cfg.title+'（'+num+'s)');
+        }
+      },1000);
+    }
+    
+    $btn.click(function(){
+      conf.onClick();
+    });
+  }
+}
+
+
+/*
+
+//2.工场函数方式：
+var $timerButton =(function(){
+  //引入DOM方式①
+  //var html ='<input type="button" id="add" value="同意（6S）" disabled">';
+  
+  //Attention：
+  //写在show之外的变量声明只会执行一次，所以再点击添加按钮
+  //也是在第一个的基础上做修改
+  //而不是新增一个按钮
+  //解决办法：把变量声明放到show函数中去
+  
+  function show(conf){ 
+  var $btn =
+      $('<input class="timer-button" type="button" disabled>'),
+      cfg={  //默认配置信息
+        container:'body',
+        num:6,
+        title:'同意',
+        state:'禁用'
+      },
+      timer,
+      isRun=false;
+
+    //1.DOM draw DOM绘制
+    //① $(container).html(html);
+    //②
+    $(cfg.container).append($btn);
+    $.extend(cfg,conf);
+    num = conf.num;
+    $btn.val(cfg.title+"("+num+"s)");
     
     //2.event bind 
     if(isRun === true && timer!==undefined){
@@ -51,6 +104,8 @@ var $timerButton =(function(){
   };
   
 }());
+*/
+
 
 //不用 page load event
 /*
