@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>timer button</title>
+  <link rel="stylesheet" href="./dlg-goto.css">
+</head>
+<body>
+  <input type="button" id="popup" value="弹出对话框"/>
+  <hr/>
+  <div class="notepad-dlg-goto">
+    <div class="dialogobox">
+      <div class="titlebar">
+        <p class="title">转到指定行</p>
+        <span class="close-btn">✖</span>
+      </div>
+      <div class="main">
+        <label for="">行号(L):</label>
+        <br>
+        <input class="txt-line-num" type="text" autofacus>
+        <br>
+        <input class="btn-goto" type="button" value="转到">
+        <input class="btn-cancel" type="button" value="取消">
+      </div>
+    </div>
+  </div>
+  
+  <div id="main"></div>
+
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="./dlg-goto.js"></script> 
+  <script>
+  $(function(){
+    var $btnDlg = $("#popup"),
+
+    $btnDlg.click(function(){
+      $dlgGoto.show({
+        num:$num.val(),
+        title:'发送验证码',
+        onClick:function(){
+          console.log('点击了按钮')
+        }
+        });
+      });
+    });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+.notepad-dlg-goto{
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+  position:fixed;
+  z-index:10;
+}
+.notepad-dlg-goto .dialogbox{
+  border:1px solid #0f7fdb;
+  box-shadow:10px 10px 10px #d6d6d5;
+  cursor:default;
+  height:160px;
+  width:239px;
+  margin: 0 auto;
+  top:100;
+  position:relative;
+}
+
+.notepad-dlg-goto .txt-line-num{
+  box-sizing:border-box;
+  height:30px;
+  width:266px;
+  margin:10px 0;
+}
+.notepad-dlg-goto input[type="button"]{
+  width:86px;
+  height:26px;
+}
+.notepad-dlg-goto .btn-goto{
+
+}
+
